@@ -1,0 +1,84 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Iris flower prediction</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'logo.jpeg'%}" alt="" width="80" height="60" style="border-radius:50%">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-1">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Iris Flower</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<form method="post" class="mt-5 text-center">
+    {% csrf_token %}
+    <label for="ip1" class="fs-3">Please provide values :</label> <br><br><br>
+    <input name="i1" class="text-center rounded-pill" id="ip1" autofocus type="text" placeholder="sepal length in cm">
+    <br> <br>
+    <input name="i2" class="text-center rounded-pill" type="text" placeholder="petal width in cm"> <br> <br>
+    <input name="i3" class="text-center rounded-pill" type="text" placeholder="sepal width in cm"> <br> <br>
+    <input name="i4" class="text-center rounded-pill" type="text" placeholder="petal length in cm"> <br> <br>
+    <input type="submit" value="Predict">
+</form>
+<div class="mt-5">
+{% if pd == 0 %}
+<div class="mx-auto card" style="width: 18rem;">
+    <img src="{% static 'satosa.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Iris Satosa</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% elif pd == 1 %}
+<div class="mx-auto card" style="width: 18rem;">
+    <img src="{% static 'Versicolour.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Iris Versicolour</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% elif pd == 2 %}
+<div class="mx-auto card" style="width: 18rem;">
+    <img src="{% static 'Virginica.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Iris Verginica</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endif %}
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
